@@ -1,0 +1,62 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* Full page background color */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px; /* Add 10px padding from the bottom of the visible work area */
+}
+
+#messageDisplay {
+    flex-grow: 1; /* Take up available space */
+    border: 5px solid #2a5aa3;
+    padding: 20px;
+    margin: 10px; /* Add margin around the message display */
+    background-color: #013d6e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-panel {
+    display: flex; /* This will align the child elements in a row */
+    justify-content: left; /* This will center the elements in the flex container */
+    align-items: center; /* This will vertically align the elements in the center */
+    gap: 30px; /* This adds space between the button and the date display */
+    padding-bottom: 10px; /* Add 10px padding from the bottom of the visible work area for the control panel */
+    
+}
+
+.regular-text {
+    font-size: 4vw; /* Example using viewport width for responsiveness */
+    color: rgb(255, 255, 255);
+    margin: 0.5vh; /* Adjust the margin as necessary */
+}
+
+.clock-number {
+    font-size: 8vw; /* Twice the size of regular-text */
+    color: rgb(255, 255, 255);
+    margin: 1vh; /* Adjust the margin as necessary */
+}
+
+.date-text {
+    color: rgb(104, 104, 104); /* Set the color for the date text */
+    font-size: small; /* Keep the font size small as per your request */
+    margin-top: 20px; /* Adds a little space above the date text */
+
+}
+
+.smallText {
+    color: rgb(104, 104, 104); /* Set the color for the date text */
+    font-size: small; /* Keep the font size small as per your request */
+    margin-top: 20px; /* Adds a little space above the date text */
+
+}
+
+.spacer {
+    padding: 0 10px; /* Adjust padding as needed */
+
+}
