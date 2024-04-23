@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
 </head>
 <body>
+    <!-- move text to external file for easy editing -->
     <div id="messageDisplay">
         <div class="regular-text">ON THE JOB</div>
         <div class="regular-text">SAFETY BEGINS HERE.</div>
         <div class="regular-text">WE HAVE WORKED</div>
-        <div class="clock-number">2473</div> <!-- Clock number with its own style -->
+        <div class="DayCounter">2473</div> <!-- Clock number with its own style -->
         <div class="regular-text">DAYS WITHOUT A LOST TIME ACCIDENT!</div>
         <br>
         <div class="regular-text">ACCIDENTS ARE AVOIDABLE!</div>
@@ -27,6 +28,17 @@
         <div id="timeNowDisplay" class="date-text"></div> <!-- Display Current time here -->
         <span class="smallText">press F11 to enter/exit full screen</span>
     </div>
+    <!-- Custom prompt modal -->
+    <div id="PromptForDate" style="display:none;">
+        <div class="modal-content">
+            <p>Please enter a date (YYYY-MM-DD):</p>
+            <input type="text" id="dateInput"> <!-- Removed inline font size -->
+            <button onclick="submitDate()">Submit</button>
+            <button onclick="closePrompt()">Cancel</button>
+        </div>
+    </div>
+    
+
     <script src="main.js"></script>
 </body>
 </html>

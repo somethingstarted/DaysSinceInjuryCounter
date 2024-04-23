@@ -64,19 +64,28 @@ function updateDays() {
 
 function updateMessage(enteredDate) {
     const daysSince = calculateDaysSince(enteredDate);
-    document.querySelector('.clock-number').innerText = daysSince; // Dynamically update the clock number
+    document.querySelector('.DayCounter').innerText = daysSince; // Dynamically update the DayCounter number
     document.getElementById('dateDisplay').innerText = `Date Entered: ${enteredDate}`; // Display the entered date
 }
 
 function promptForDate() {
-    const today = formatDate(new Date());
-    const enteredDate = prompt("Please enter a date (YYYY-MM-DD):", today);
+    document.getElementById('PromptForDate').style.display = 'block';
+}
+
+function submitDate() {
+    var enteredDate = document.getElementById('dateInput').value;
     if (!enteredDate) return; // Exit if no date entered
 
     updateMessage(enteredDate);
+    closePrompt();
+}
+
+function closePrompt() {
+    document.getElementById('PromptForDate').style.display = 'none';
 }
 
 document.getElementById('changeDateButton').addEventListener('click', promptForDate);
+
 
 
 

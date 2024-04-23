@@ -1,3 +1,7 @@
+:root {
+    --primary-font: 'cambria';
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -19,6 +23,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: var(--primary-font);;
 }
 
 
@@ -27,18 +32,21 @@ html, body {
     font-size: 4vw; /* Example using viewport width for responsiveness */
     color: rgb(255, 255, 255);
     margin: 0.5vh; /* Adjust the margin as necessary */
+    font-family: var(--primary-font);;
 }
 
-.clock-number {
+.DayCounter {
     font-size: 8vw; /* Twice the size of regular-text */
     color: rgb(255, 255, 255);
     margin: 1vh; /* Adjust the margin as necessary */
+    font-family: var(--primary-font);;
 }
 
 .date-text, .smallText {
     color: rgb(104, 104, 104); /* Uniform color for date and small text */
     font-size: 2vh; /* Uniform small font size for consistency */
     /* Removed margin-top for better alignment */
+    font-family: var(--primary-font);;
 }
 
 .control-panel {
@@ -54,3 +62,43 @@ html, body {
     padding: 0 10px; /* Adjust padding as needed */
 
 }
+
+
+
+#PromptForDate {
+    position: fixed;
+    font-size: 2vw;
+    left: 30%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it's on top */
+    background-color: rgba(19, 9, 9, 0.5); /* Adjust transparency here */
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px); /* Blurs the background seen through the modal */
+    width: 40%;
+    box-sizing: border-box;
+}
+
+
+
+
+#PromptForDate input[type="text"], #PromptForDate button {
+    font-size: 4vh; /* Sets the font size for the input and buttons */
+    padding: 10px; /* Adds padding for better touch interaction */
+    margin: 4va 0; /* Adds a slight margin between elements */
+    width: 30%; /* Optional: Makes buttons and input take up more space */
+    /*display: block;*/ /* Makes elements stack vertically */
+}
+
+#PromptForDate button {
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    font-size: 3vh;
+    background-color: #f1f1f1; /* Light grey background for buttons */
+    border: none; /* Removes border */
+    border-radius: 5px; /* Rounded corners for buttons */
+}
+
+
