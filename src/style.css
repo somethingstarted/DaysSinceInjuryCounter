@@ -21,14 +21,7 @@ html, body {
     align-items: center;
 }
 
-.control-panel {
-    display: flex; /* This will align the child elements in a row */
-    justify-content: left; /* This will center the elements in the flex container */
-    align-items: center; /* This will vertically align the elements in the center */
-    gap: 30px; /* This adds space between the button and the date display */
-    padding-bottom: 10px; /* Add 10px padding from the bottom of the visible work area for the control panel */
-    
-}
+
 
 .regular-text {
     font-size: 4vw; /* Example using viewport width for responsiveness */
@@ -42,18 +35,19 @@ html, body {
     margin: 1vh; /* Adjust the margin as necessary */
 }
 
-.date-text {
-    color: rgb(104, 104, 104); /* Set the color for the date text */
-    font-size: small; /* Keep the font size small as per your request */
-    margin-top: 20px; /* Adds a little space above the date text */
-
+.date-text, .smallText {
+    color: rgb(104, 104, 104); /* Uniform color for date and small text */
+    font-size: 2vh; /* Uniform small font size for consistency */
+    /* Removed margin-top for better alignment */
 }
 
-.smallText {
-    color: rgb(104, 104, 104); /* Set the color for the date text */
-    font-size: small; /* Keep the font size small as per your request */
-    margin-top: 20px; /* Adds a little space above the date text */
-
+.control-panel {
+    display: flex; /* This will align the child elements in a row */
+    justify-content: left; /* This will center the elements in the flex container */
+    align-items: center; /* This will vertically align the elements in the center */
+    gap: 30px; /* This adds space between the button and the date display */
+    padding-bottom: 10px; /* Add 10px padding from the bottom of the visible work area for the control panel */
+    
 }
 
 .spacer {
