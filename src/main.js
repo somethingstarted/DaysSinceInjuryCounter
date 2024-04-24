@@ -65,16 +65,23 @@ function updateDays() {
 function updateMessage(enteredDate) {
     const daysSince = calculateDaysSince(enteredDate);
     document.querySelector('.DayCounter').innerText = daysSince; // Dynamically update the DayCounter number
-    document.getElementById('dateDisplay').innerText = `Date Entered: ${enteredDate}`; // Display the entered date
+    document.getElementById('dateDisplay').innerText = `Date of last injury: ${enteredDate}`; // Display the entered date
 }
 
 function promptForDate() {
+    var dateInputField = document.getElementById('dateInput');
+    var existingDate = document.getElementById('dateDisplay').textContent.split(': ')[1];
+    
+    // If there's already a date displayed, use it; otherwise, use today's date
+    dateInputField.value = existingDate || formatDate(new Date());
+    
     document.getElementById('PromptForDate').style.display = 'block';
 }
 
+
 function submitDate() {
     var enteredDate = document.getElementById('dateInput').value;
-    if (!enteredDate) return; // Exit if no date entered
+    if (!enteredDate) return; // Exit if no Date entered.
 
     updateMessage(enteredDate);
     closePrompt();
