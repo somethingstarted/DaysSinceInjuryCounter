@@ -47,14 +47,22 @@ function calculateDaysSince(dateEntered) {
     return diffDays;
 }
 
+
+/// the enter date pop up ///
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize with today's formatted date
     const today = formatDate(new Date());
-    updateMessage(today); // Use today's date as the default to avoid NaN
+    updateMessage(today); // Initialize with today's formatted date
     setInterval(updateCurrentTime, 1000);
-    // Refresh the page every 60 seconds
-    setInterval(updateDays, 1000);
+    setInterval(updateDays, 1000); // Refresh every second
     updateTitleWithDate();
+});
+
+document.addEventListener('keydown', function(event) {
+    // Handle the Escape key
+    if (event.key === 'Escape' && document.getElementById('PromptForDate').style.display === 'block') {
+        closePrompt();
+    }
 });
 
 function updateDays() {
@@ -64,24 +72,33 @@ function updateDays() {
 
 function updateMessage(enteredDate) {
     const daysSince = calculateDaysSince(enteredDate);
-    document.querySelector('.DayCounter').innerText = daysSince; // Dynamically update the DayCounter number
-    document.getElementById('dateDisplay').innerText = `Date of last injury: ${enteredDate}`; // Display the entered date
+    document.querySelector('.DayCounter').innerText = daysSince;
+    document.getElementById('dateDisplay').innerText = `Date of last injury: ${enteredDate}`;
 }
 
 function promptForDate() {
     var dateInputField = document.getElementById('dateInput');
     var existingDate = document.getElementById('dateDisplay').textContent.split(': ')[1];
-    
-    // If there's already a date displayed, use it; otherwise, use today's date
-    dateInputField.value = existingDate || formatDate(new Date());
-    
+    dateInputField.value = existingDate || formatDate(new Date()); // Set the value to existing or today's date
+
+    dateInputField.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9-]/g, ''); // Restrict to numbers and hyphens
+    });
+
+    dateInputField.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            submitDate();
+        }
+    });
+
     document.getElementById('PromptForDate').style.display = 'block';
+    dateInputField.focus(); // Automatically focus the input field
 }
 
 
 function submitDate() {
     var enteredDate = document.getElementById('dateInput').value;
-    if (!enteredDate) return; // Exit if no Date entered.
+    if (!enteredDate) return; // Ensure a date is entered
 
     updateMessage(enteredDate);
     closePrompt();
@@ -91,6 +108,9 @@ function closePrompt() {
     document.getElementById('PromptForDate').style.display = 'none';
 }
 
+
+//////////////////
+
 document.getElementById('changeDateButton').addEventListener('click', promptForDate);
 
 
@@ -99,4 +119,36 @@ document.getElementById('changeDateButton').addEventListener('click', promptForD
 // Initialize with today's date
 const today = formatDate(new Date());
 updateMessage(today); // Use today's date as the default
+
+/// cookies ///
+// to do, add a option for cookies for the stupid EU users if there are any ever ///
+
+document.cookie = "cookieName=cookieValue; expires=date; path=/;";
+
+function submitDate() {
+    var enteredDate = document.getElementById('dateInput').value;
+    if (!enteredDate) return;
+
+    // Set cookie that expires in 7 days
+    let d = new Date();
+    d.setTime(d.getTime() + (7*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = "lastEnteredDate=" + enteredDate + ";" + expires + ";path=/";
+
+    updateMessage(enteredDate);
+    closePrompt();
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const lastEnteredDate = getCookie('lastEnteredDate');
+    const today = formatDate(new Date());
+    const initialDate = lastEnteredDate || today;
+    updateMessage(initialDate);
+    setInterval(updateCurrentTime, 1000);
+    setInterval(updateDays, 1000);
+    updateTitleWithDate();
+});
+
+
 
