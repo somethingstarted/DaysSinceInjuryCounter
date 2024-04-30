@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateTitleWithDate() {
     document.title = `Safety Timer`;
 }
-
+//
 
 
 function formatDate(date) {
